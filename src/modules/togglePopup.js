@@ -9,8 +9,6 @@ const togglePopup = () => {
     const popupDiscount = document.querySelector('.popup-discount');
     const checkBtn = document.querySelector('.check-btn');
     const popupCheck = document.querySelector('.popup-check');
-    const directorBtn = document.querySelector('.director-btn');
-    const popupConsultation = document.querySelector('.popup-consultation');
     
     //Вызов модального окна при клике на надпись "Перезвоните мне"
         callBtn.forEach((elem) => {
@@ -30,12 +28,7 @@ const togglePopup = () => {
             popupCheck.style.display = 'block';
             });
     
-     //Модальное окно "Получить консультацию"
-        directorBtn.addEventListener('click', () => {
-            popupConsultation.style.display = 'block';
-        });       
-        
-    //закрытие модального окна
+     //закрытие модального окна
         popup.forEach((elem) => {
             elem.addEventListener('click', (event) => {
             let target = event.target;
