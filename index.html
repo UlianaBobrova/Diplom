@@ -139,7 +139,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse-in" role="tabpanel"
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                              aria-labelledby="headingOne">
                             <div class="panel-body">
                                 <img class="type-septic" src="img/constructor/type-septic.png" alt="septic">
@@ -176,33 +176,33 @@
                                 <div class="select-box">
                                     <p><strong>Диаметр</strong></p>
                                     <select class="form-control expand">
-                                        <option>1.4 метра</option>
-                                        <option>2 метра</option>
+                                        <option value="1">1.4 метра</option>
+                                        <option value="1.2">2 метра</option>
                                     </select>
                                 </div>
                                 <div class="select-box">
                                     <p><strong>Количество колец</strong></p>
                                     <select class="form-control expand">
-                                        <option>1 штука</option>
-                                        <option>2 штуки</option>
-                                        <option>3 штуки</option>
+                                        <option value="1">1 штука</option>
+                                        <option value="1.3">2 штуки</option>
+                                        <option value="1.5">3 штуки</option>
                                     </select>
                                 </div>
 
                                 <div class="title-text">второй колодец (дренажный)</div>
-                                <div class="select-box">
+                                <div class="select-box" id="selectBox3">
                                     <p><strong>Диаметр</strong></p>
                                     <select class="form-control expand">
-                                        <option>1.4 метра</option>
-                                        <option>2 метра</option>
+                                        <option value="1">1.4 метра</option>
+                                        <option value="1.2">2 метра</option>
                                     </select>
                                 </div>
-                                <div class="select-box">
+                                <div class="select-box" id="selectBox4">
                                     <p><strong>Количество колец</strong></p>
                                     <select class="form-control expand">
-                                        <option>1 штука</option>
-                                        <option>2 штуки</option>
-                                        <option>3 штуки</option>
+                                        <option value="1">1 штука</option>
+                                        <option value="1.3">2 штуки</option>
+                                        <option value="1.5">3 штуки</option>
                                     </select>
                                 </div>
                                 <a class="button construct-btn" data-toggle="collapse" data-parent="#accordion"
@@ -227,9 +227,9 @@
 
                                 <div class="onoffswitch">
                                     <input type="checkbox" name="onoffswitch-two" class="onoffswitch-checkbox"
-                                           id="myonoffswitch-two" checked>
+                                           id="myonoffswitch-two" unchecked>
                                     <label class="onoffswitch-label" for="myonoffswitch-two">
-                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-inner" id="innerTwo"></span>
                                         <span class="onoffswitch-switch"></span>
                                     </label>
                                 </div>
@@ -253,7 +253,7 @@
                              aria-labelledby="headingFour">
                             <div class="panel-body">
                                 <p>Введите расстояние до дома</p>
-                                <input type="text">
+                                <input type="text" value="">
                                 <button class="button construct-btn call-btn">Получить расчет и скидку</button>
                             </div>
                         </div>
@@ -485,7 +485,7 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form class="capture-form text-center" id="formDiscount">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_1">Как к вам обращаться</label>
                 <input type="text" id="name_1" name="user_name" placeholder="Ваше имя" required>
@@ -506,7 +506,7 @@
     <div class="popup-dialog">
         <div class="popup-content">
             <!-- <div class="popup-form"> -->
-            <form class="capture-form text-center">
+            <form class="capture-form text-center" id="formConsultation">
                 <span class="circle"><button class="popup-close">&times;</button></span>
                 <label for="name_11">Как к вам обращаться</label>
                 <input type="text" id="name_11" name="user_name" placeholder="Ваше имя" required>

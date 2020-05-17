@@ -22,7 +22,7 @@ questionBlock();
 addSentence();
 
 //калькулятор
-calc();
+calc(10000);
 
 //окно с консультацией
 sendQuestion();
