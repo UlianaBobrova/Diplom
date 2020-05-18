@@ -16,23 +16,38 @@ const calc = (price = 10000) => {
     const selectBox4 = document.querySelector('#selectBox4');
     const selectField3 = document.querySelectorAll('.expand')[2];
     const selectField4 = document.querySelectorAll('.expand')[3];
+
     const calcBlock = document.querySelector('.panel-group');
     const checkBoxOne = document.querySelector('#myonoffswitch');
     const checkBoxTwo = document.querySelector('#myonoffswitch-two');
  
     const onoffswitchLabelOne = document.querySelector('.onoffswitch-inner');
     const onoffswitchLabelTwo = document.querySelector('#innerTwo');
-    const callBtn = document.querySelectorAll('.call-btn');
+    const calcBtn = document.querySelector('#calcBtn');
     const popupCall = document.querySelector('.popup-call');
     const formDiscount = document.querySelector('#formDiscount');
-    console.log(formDiscount);
+    const inputName = document.querySelector('#name_1');
+    let total = 1;
+    let typeValue1, typeValue2, typeValue3, typeValue4;
+
      //переменные с сообщениями,которые мы будем передавать пользователю
      const errorMessage = 'Что-то пошло не так...',
      loadMessage = 'Загрузка...',
      successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
 
      const statusMessage = document.createElement('div');
-    statusMessage.style.cssText = 'font-size: 2rem;';
+        statusMessage.style.cssText = 'font-size: 2rem;';
+
+    //очистка input-ов
+    const clearInput = () => {
+        document.querySelectorAll('input').forEach((item) => {
+            item.value = ''; 
+        });
+    };
+//Валидация вводимых данных
+    inputName.addEventListener('input', (event) => {
+        event.target.value = event.target.value.replace(/[^а-я ]/gi, '');
+        });  
 
     calcBlock.addEventListener('change', (event) => {
         const target = event.target;
@@ -68,6 +83,7 @@ const calc = (price = 10000) => {
     });
 
     const openTab = () => {
+        
         const toggleCollapse = (index) => {
             for(let i = 0; i < collapse.length; i++) {
                 if(index === i) {
@@ -108,12 +124,11 @@ const calc = (price = 10000) => {
     openTab();
 
     const countSum = () => {
-        let total = 1;
-        const typeValue1 = selectField1.options[selectField1.selectedIndex].value,
-            typeValue2 = selectField2.options[selectField2.selectedIndex].value,
-            typeValue3 = selectField3.options[selectField3.selectedIndex].value,
+        
+        typeValue1 = selectField1.options[selectField1.selectedIndex].value;
+            typeValue2 = selectField2.options[selectField2.selectedIndex].value;
+            typeValue3 = selectField3.options[selectField3.selectedIndex].value;
             typeValue4 = selectField4.options[selectField4.selectedIndex].value;
-        const inputDistinaton = +inputDist.value;
 
 //однокамерный септик   
         if(checkBoxOne.hasAttribute('checked')) {
@@ -131,14 +146,13 @@ const calc = (price = 10000) => {
             }   
         }
 //вывод на страницу
-    totalValue.placeholder = total;
-    // };
+        totalValue.placeholder = total;
+    };
 
-    callBtn.forEach((elem) => {
-        elem.addEventListener('click', (event) => {
+    calcBtn.addEventListener('click', (event) => {
+        event.preventDefault();
         popupCall.style.display = 'block';
-        });
-
+       
         formDiscount.addEventListener('submit', (event) => {
             //отменяем стандартное поведение,чтобы страница не перезагружалась после кнопки submit
                 event.preventDefault();
@@ -154,7 +168,7 @@ const calc = (price = 10000) => {
                 body.value2 = typeValue2;
                 body.value3 = typeValue3;
                 body.value4 = typeValue4;
-                body.input_distant = inputDistinaton;
+                body.input_distant = inputDist.value;
                 //с помощью метода .entries вытащим значения из formData.Получаем массив
                 for(let val of formData.entries()) {
                 //Добавляем полученные данные в body. Значения с ключом.Получаем объект
@@ -164,36 +178,35 @@ const calc = (price = 10000) => {
                 postData(body, 
                         () => { 
                         statusMessage.textContent = successMessage;
+                        setTimeout(() => {statusMessage.textContent = ''}, 5000);
                         }, 
                         (error) => {
                         statusMessage.textContent = errorMessage;
+                        setTimeout(() => {statusMessage.textContent = ''}, 2000);
                         console.error(error);
-                        });
-                //clearInput();
-            });
+                        }); 
+                        clearInput();             
         });
-    };
+    });
+
         //функция обращения к серверу
-         const postData = (body, outputData, errorData) => {
-            const request = new XMLHttpRequest();
-            request.addEventListener('readystatechange', () => {
-                if(request.readyState !== 4) {
-                    return;
-                }
-                if(request.status === 200) {
-                    outputData();
-                } else {
-                    errorData(request.status);
-                }
-            });
-            request.open('POST', './server.php');
-            request.setRequestHeader('Content-Type', 'application/json');
+    const postData = (body, outputData, errorData) => {
+        const request = new XMLHttpRequest();
+        request.addEventListener('readystatechange', () => {
+             if(request.readyState !== 4) {
+                 return;
+            }
+            if(request.status === 200) {
+                outputData();
+            } else {
+                errorData(request.status);
+            }
+         });
+        request.open('POST', './server.php');
+        request.setRequestHeader('Content-Type', 'application/json');
     
-            request.send(JSON.stringify(body));
-        };
+        request.send(JSON.stringify(body));
     };
-
-
-
+};
 
 export default calc;

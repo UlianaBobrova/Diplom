@@ -596,12 +596,16 @@ header .logo img {
 }
 
 .constructor .panel-two .title-text {
+    /* display: 'none'; */
     font-family: 'MuseoSansCyrl_reg', sans-serif;
     font-size: 1.4rem;
     text-transform: uppercase;
     margin-left: 1rem;
     margin-bottom: 1rem;
     font-weight: 500
+}
+.constructor .panel-two #titletext2 {
+    display: none;
 }
 
 .constructor .panel-two .select-box {
@@ -611,7 +615,12 @@ header .logo img {
     margin-left: 1rem;
     margin-bottom: 2rem
 }
-
+.constructor .panel-two #selectBox3 {
+    display: none;
+}
+.constructor .panel-two #selectBox4 {
+    display: none;
+}
 .constructor .panel-two .select-box p {
     font-family: 'MuseoSansCyrl_med', sans-serif;
     font-size: 1.3rem
