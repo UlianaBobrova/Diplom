@@ -3,7 +3,6 @@
 
 const addSentence = () => {
     const addBtn = document.querySelector('#show');
-    const removeBtn = document.querySelector('#close');
     const blockHidden = document.querySelectorAll('.hidden');
     const blockVisible = document.querySelector('.visible-sm-block');  
 
@@ -15,7 +14,6 @@ const addSentence = () => {
         blockVisible.classList.toggle('visible-sm-block');
 
         if(addBtn.innerHTML === 'Больше...'){
-            console.log('Hello');
             addBtn.innerHTML = 'Скрыть..';
             return;
         } else {

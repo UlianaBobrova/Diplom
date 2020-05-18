@@ -3,19 +3,19 @@
 const togglePopup = () => {
     //получаем popup окна
     const popup = document.querySelectorAll('.popup');
-    // const popupCall = document.querySelector('.popup-call');
-    // const callBtn = document.querySelectorAll('.call-btn');
+    const popupCall = document.querySelector('.popup-call');
+    const callBtn = document.querySelectorAll('.call-btn');
     const discountBtn = document.querySelectorAll('.discount-btn');
     const popupDiscount = document.querySelector('.popup-discount');
     const checkBtn = document.querySelector('.check-btn');
     const popupCheck = document.querySelector('.popup-check');
     
     //Вызов модального окна при клике на надпись "Перезвоните мне"
-        // callBtn.forEach((elem) => {
-        //     elem.addEventListener('click', () => {
-        //     popupCall.style.display = 'block';
-        //     });
-        // });
+        callBtn.forEach((elem) => {
+            elem.addEventListener('click', () => {
+            popupCall.style.display = 'block';
+            });
+        });
     
         discountBtn.forEach((elem) => {
             elem.addEventListener('click', () => {
@@ -45,6 +45,4 @@ const togglePopup = () => {
         });
     };
     
-
-
 export default togglePopup;

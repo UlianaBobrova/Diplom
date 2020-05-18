@@ -17,7 +17,7 @@ const questionBlock = () => {
 
 //Добалвляем класс collapse-in элементу,на который нажали
     accordionTwo.addEventListener('click', (event) => {
-             event.preventDefault();
+            event.preventDefault();
             let target = event.target;
 
              while(target !== accordionTwo) {

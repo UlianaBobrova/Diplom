@@ -5,7 +5,7 @@ import sendForm from './modules/sendForm';
 import questionBlock from './modules/questionBlock';
 import addSentence from './modules/addSentence';
 import calc from './modules/calc';
-import sendQuestion from './modules/sendQuestion';
+//import sendQuestion from './modules/sendQuestion';
 
 
 
@@ -25,4 +25,4 @@ addSentence();
 calc(10000);
 
 //окно с консультацией
-sendQuestion();
+//sendQuestion();
