@@ -151,7 +151,8 @@ const calc = (price = 10000) => {
 
     calcBtn.addEventListener('click', (event) => {
         event.preventDefault();
-        popupCall.style.display = 'block';
+        popupCall.style.display = 'block'; 
+    });
        
         formDiscount.addEventListener('submit', (event) => {
             //отменяем стандартное поведение,чтобы страница не перезагружалась после кнопки submit
@@ -187,7 +188,6 @@ const calc = (price = 10000) => {
                         }); 
                         clearInput();             
         });
-    });
 
         //функция обращения к серверу
     const postData = (body, outputData, errorData) => {
